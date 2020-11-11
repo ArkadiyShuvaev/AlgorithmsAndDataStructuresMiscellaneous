@@ -27,19 +27,20 @@ public class App {
             return;
         }
 
-        var partitionedElemId = GetPartitionedPivotId(array, firstElemId, lastElemId);
+        var partitionedElemId = CreatePartition(array, firstElemId, lastElemId);
 
         qSort(array, firstElemId, partitionedElemId - 1); // Left side
         qSort(array, partitionedElemId + 1, lastElemId); // Right side
     }
 
     /**
-     * Returns the id of pivot item in partitioned part of array.
-     * @param array - A reference to the sorted array.
-     * @param firstItemId - An id of the left border of the partition.
-     * @param lastItemId - An id of the right border of the partition.
+     * Creates a partition.
+     * @param array A reference to the sorted array.
+     * @param firstItemId An id of the left border of the partition.
+     * @param lastItemId An id of the right border of the partition.
+     * @return  An id of the pivot item of the partitioned part of array.
      */
-    private static int GetPartitionedPivotId(ArrayList<Integer> array, int firstItemId, int lastItemId) {
+    private static int CreatePartition(ArrayList<Integer> array, int firstItemId, int lastItemId) {
         var pivotId = lastItemId;
         var pivotValue = array.get(lastItemId);
         var borderIndex = firstItemId;
